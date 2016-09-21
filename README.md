@@ -21,14 +21,13 @@ import { Modules } from 'react-modules'
 - "isomorphic", SSR friendly
 - transpiles to [webpack-friendly split points](https://webpack.github.io/docs/code-splitting.html) with a plugin(`react-modules/babel`)
 - leverage the structure of your app to efficiently split/load your javascript bundles 
-
+- `include` prop to skip code splitting
 
 todo
 ---
 
 - tests
 - use error boundaries (`unstable_handleError`)
-- `bypass` prop to skip code splitting
 - calling `require` could be optional
 - preserve server rendered html until module loads
 - react-native
