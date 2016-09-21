@@ -1,6 +1,6 @@
 let template = require('babel-template')
 
-let wrapper = template(`callback => require.ensure([], require => {
+let boilerplate = `callback => require.ensure([], require => {
   let success = false, ret
   try{
     ret = SOURCE
@@ -12,22 +12,11 @@ let wrapper = template(`callback => require.ensure([], require => {
   if(success){
     callback(null, ret)  
   }
-})`)
+}`
 
-let wrapperWithName = template(`callback => require.ensure([], require => {
-  let success = false, ret
-  try{
-    ret = SOURCE
-    success = true
-  }
-  catch(err) {
-    callback(err) 
-  }
-  if(success){
-    callback(null, ret)  
-  }
-}, NAME)`)
-// todo - catch error on loading modules / error boundaries 
+let wrapper = template(boilerplate + ')')
+
+let wrapperWithName = template(boilerplate + ', NAME)')
 
 let TRUE = template('true')
 
