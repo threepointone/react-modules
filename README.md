@@ -32,4 +32,5 @@ todo
 - calling `require` could be optional
 - preserve server rendered html until module loads
 - react-native
+- browserify compat
 - analyze the app to generate optimal split and / or entry points 
