@@ -1,6 +1,6 @@
 {
   "name": "react-modules",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "code splitting as a component",
   "main": "lib/index.js",
   "scripts": {
