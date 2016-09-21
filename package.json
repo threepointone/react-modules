@@ -1,7 +1,7 @@
 {
   "name": "react-modules",
   "version": "1.0.0",
-  "description": "",
+  "description": "code splitting as a component",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack --config example/webpack.config.js --watch",

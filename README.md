@@ -1,7 +1,7 @@
 react-modules
 ---
 
-`npm install threepointone/react-modules --save`
+`npm install react-modules --save`
 
 code splitting as a component
 
