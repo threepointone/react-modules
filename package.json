@@ -1,0 +1,49 @@
+{
+  "name": "react-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "webpack --config example/webpack.config.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib --presets es2015,stage-0,react",
+    "prepublish": "npm run build"
+  },
+  "files": [
+    "lib",
+    "babel.js"
+  ],
+  "author": "Sunil Pai <threepointone@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-template": "^6.15.0",
+    "eslint": "^3.5.0",
+    "eslint-config-rackt": "^1.1.1",
+    "eslint-plugin-react": "^6.3.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "webpack": "^1.13.2"
+  },
+  "peerDependencies": {
+    "babel-template": "*",
+    "react": "*"
+  },
+  "eslintConfig": {
+    "extends": [
+      "rackt"
+    ],
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "react/jsx-uses-vars": "error",
+      "react/jsx-uses-react": "error"
+    }
+  }
+}
