@@ -25,12 +25,12 @@ import { Modules } from 'react-modules'
 - leverage the structure of your app to efficiently split/load your javascript bundles 
 - `include` prop to skip code splitting
 - preserve server rendered html until module loads(!)
+- catch errors with `onError` callback
 
 todo
 ---
 
 - tests
-- use error boundaries (`unstable_handleError`)
 - react-native
 - browserify compat
 - analyze the app to generate optimal split and / or entry points 

@@ -1,6 +1,9 @@
 import React from 'react'
 
 export class Modules extends React.Component {
+  static defaultProps = {
+    onError() {}
+  }
   constructor(props) {
     super(props)
     if(!this.props.transpiled) { 
@@ -17,7 +20,9 @@ export class Modules extends React.Component {
     let sync = true
 
     this.props.load((err, loaded) => {
-      // todo - check err 
+      if(err) {
+        this.props.onError(err)        
+      }
       if(sync) {
         this.state.loaded = loaded
       }
@@ -26,6 +31,9 @@ export class Modules extends React.Component {
       }
     })
     sync = false 
+  }
+  unstable_handleError(err) {
+    this.props.onError(err)
   }
   
   componentWillReceiveProps() {

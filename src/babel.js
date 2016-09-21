@@ -1,6 +1,18 @@
 let template = require('babel-template')
 
-let wrapper = template('callback => require.ensure([], require => callback(null, SOURCE))')
+let wrapper = template(`callback => require.ensure([], require => {
+  let success = false, ret
+  try{
+    ret = SOURCE
+    success = true
+  }
+  catch(err) {
+    callback(err) 
+  }
+  if(success){
+    callback(null, ret)  
+  }
+})`)
 // todo - catch error on loading modules / error boundaries 
 
 let TRUE = template('true')

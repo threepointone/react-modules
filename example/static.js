@@ -7,9 +7,8 @@ const context = createServerRenderContext()
 
 let markup = renderToString(
     <ServerRouter
-      location={'/d'}
-      context={context}
-    >
+      location={'/'}
+      context={context}>
       <App/>
     </ServerRouter>
   )
