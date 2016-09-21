@@ -24,12 +24,13 @@ import { Modules } from 'react-modules'
 - transpiles to [webpack-friendly split points](https://webpack.github.io/docs/code-splitting.html) with a plugin(`react-modules/babel`)
 - leverage the structure of your app to efficiently split/load your javascript bundles 
 - `include` prop to skip code splitting
-- preserve server rendered html until module loads(!)
+- helpers to preserve server-rendered html until module loads
 - catch errors with `onError` callback
 
 todo
 ---
 
+- docs
 - tests
 - react-native
 - browserify compat
