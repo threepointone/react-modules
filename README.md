@@ -1,12 +1,12 @@
 react-modules
 ---
 
-`npm install react-modules --save`
+`npm install react-modules babel-template --save`
 
 code splitting as a component
 
 ```jsx
-import Modules from 'react-modules'
+import { Modules } from 'react-modules'
 
 <Modules   
   load={require('./App.js')}>{ 
