@@ -1,15 +1,33 @@
+import React from 'react'
+import { Modules } from '../src' 
+import { BrowserRouter, Match, Miss, Link } from 'react-router'
 
+function log(msg = this) {
+  console.log(msg)
+  return this
+}
 
-        import React from 'react'
-        import { Modules, preserve, preserved } from '../src' 
+export class App extends React.Component {
+  render() {
+    return <BrowserRouter>
+      <div>
+        <Match pattern="/" exactly render={() => <div>we home</div>}/>
+        
+        <Match pattern="/a" render={() => <Modules load={require('./a').default}>{
+            A => A ? <A/> : <span>loading A...</span>
+          }</Modules>}/>
+        <Match pattern="/b" render={() => <Modules load={require('./b').default}>{
+            B => B ? <B/> : <span>loading B...</span>
+          }</Modules>}/>
+        <Miss render={() => <span>no match</span>}/>
 
-        export class App extends React.Component {
-          render() {
-            return <Modules load={require('./a.js')} >{
-              ({ A } = {}) => A ? 
-                preserve('myhtml', <div> loaded <A/> </div>) : 
-                preserved('myhtml') ||
-                <span>loading...</span> 
-            }</Modules>
-          }
-        }
+        <ul>
+          <li><Link to="/a">to a</Link></li>
+          <li><Link to="/b">to b</Link></li>
+          <li><Link to="/">home</Link></li>
+        </ul>
+      </div>
+    </BrowserRouter>
+    
+  }
+}

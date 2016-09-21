@@ -4,7 +4,7 @@
   "description": "code splitting as a component",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack --config example/webpack.config.js --watch",
+    "start": "webpack-dev-server --config example/webpack.config.js --content-base example/ --inline --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib --presets es2015,stage-0,react",
     "prepublish": "npm run build"
@@ -28,7 +28,9 @@
     "eslint-plugin-react": "^6.3.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "webpack": "^1.13.2"
+    "react-router": "^4.0.0-alpha.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
   },
   "peerDependencies": {
     "babel-template": "*",
