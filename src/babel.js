@@ -15,10 +15,13 @@ module.exports = function ({ types: t }) {
     visitor: {
       JSXElement(path) {
         if(path.node.openingElement.name.name === 'Modules') {
-          let include = path.node.openingElement.attributes.filter(attr => attr.name.name === 'include').length > 0
-          if(!include) {
+          let included = path.node.openingElement.attributes.filter(attr => 
+            attr.name.name === 'include').length > 0
+          
+          if(!included) {
             path.node.openingElement.attributes.forEach(attr => 
               attr.name.name === 'load' && replace(attr) )
+            
             path.node.openingElement.attributes.push(
               t.jSXAttribute(t.jSXIdentifier('transpiled'), 
               t.jSXExpressionContainer(TRUE().expression)))  

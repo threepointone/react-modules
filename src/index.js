@@ -33,7 +33,36 @@ export class Modules extends React.Component {
   } 
 
   render() {
-    // todo - preserve server rendered html?
     return this.props.children(this.state.loaded)
   }
+}
+
+
+let cache = {}
+export function hydrate() {
+  // get all data-preserve
+  // cache innerhtml
+  [ ...document.querySelectorAll('[data-preserve]') ].forEach(el => {
+    let id = el.getAttribute('data-preserve')
+    if(cache[id]) {
+      console.warn(`overwriting previous key ${id}!`) // eslint-disable-line no-console
+    }
+    cache[id] = el.innerHTML
+  })
+}
+
+export function flush() {
+  cache = {}
+}
+
+export function preserve(id, element) { 
+  if(!(typeof element.type === 'string')) {
+    throw new Error('cannot preserve non-DOM element')
+  }
+  return React.cloneElement(element, { 'data-preserve': id })
+}
+
+
+export function preserved(id) {
+  return cache[id]
 }
