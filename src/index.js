@@ -63,6 +63,6 @@ export function preserve(id, element) {
 }
 
 
-export function preserved(id) {
-  return cache[id]
+export function preserved(id, Tag = 'div', props = {}) {
+  return cache[id] ? <Tag {...props} dangerouslySetInnerHTML={{ __html: cache[id] }} /> : undefined
 }
