@@ -9,7 +9,8 @@ code splitting as a component
 import Modules from 'react-modules'
 
 <Modules   
-  load={require('./App.js')}>{ // or arrays, or objects, whatevs
+  load={require('./App.js')}>{ 
+    // or arrays, or objects, whatevs
     App => App ? 
       <div><App /></div> : 
       <span>loading...</span>
