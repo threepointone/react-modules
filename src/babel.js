@@ -30,16 +30,16 @@ module.exports = function ({ types: t }) {
     visitor: {
       JSXElement(path) {
         if(path.node.openingElement.name.name === 'Modules') {
-          let bundleName = path.node.openingElement.attributes.filter(attr => 
-            attr.name.name === 'name')[0]
-          bundleName = bundleName ? bundleName.value : undefined
+          let chunkName = path.node.openingElement.attributes.filter(attr => 
+            attr.name.name === 'chunkName')[0]
+          chunkName = chunkName ? chunkName.value : undefined
 
           let included = path.node.openingElement.attributes.filter(attr => 
             attr.name.name === 'include').length > 0
           
           if(!included) {
             path.node.openingElement.attributes.forEach(attr => 
-              attr.name.name === 'load' && replace(attr, bundleName) )
+              attr.name.name === 'load' && replace(attr, chunkName) )
             
             path.node.openingElement.attributes.push(
               t.jSXAttribute(t.jSXIdentifier('transpiled'), 
