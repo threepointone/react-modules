@@ -40,17 +40,25 @@ api
   - `include={bool}` - bypasses the code split
   - `defer={bool}` - loads the scripts only in the trasnpiled version
   - `chunkName={str}` - optional, acts as third argument to the backing `require.ensure()` call for named chunks 
-  - TODO - `entry={name}` - optional, include chunk into `name` entry. works in tandem with `extractEntries`
+  - `entry={name}` - (experimental) include chunk into `name` entry. works in tandem with `extractEntries()`
 
 
 ## html persistence helpers
 
 a set of helpers to preserve server/static-rendered html, until its 'parent' module loads.
+this is useful when the component is heavy, but you still want to show prerendered html while the chunk loads 
 
 - `preserve(id, DOMelement) : DOMelement`
 - `preserved(id) : DOMelement`
-- `preserved(id, tag, props) : DOMelement`
-- `hydrate()`
+
+example - 
+```jsx
+<Module load={require('./a').default}>{
+  A => A ? preserve('myhtml', <div><App/></div>): // on SSR, this will generate html
+    preserved('myhtml') || // on browser, use the cached html, until the module loads up
+    <span>loading...</span> // if neither available, show loading state
+}</Module>
+```
 
 ## plugin 
 
@@ -58,7 +66,7 @@ a set of helpers to preserve server/static-rendered html, until its 'parent' mod
 
 ## extractEntries
 
-- TODO - `extractEntries(glob)` - statically analyze files and generate webpack entries 
+- `extractEntries(filepath)` (experimental) - statically analyze module and generate webpack entries 
 
 todo
 ---
@@ -66,5 +74,7 @@ todo
 - docs
 - tests
 - detect entry points
+- hmr compat
+- arbit file types / webpack loader compat
 - browserify compat
 - react-native

@@ -1,7 +1,8 @@
-var path = require('path')
-// generate bundles 
+var path = require('path')                                                    // eslint-disable-line
+var extractEntries = require('../lib/extractEntries').default                 // eslint-disable-line
+
 module.exports = {
-  entry: './example/index.js',
+  entry: extractEntries(path.join(__dirname, './index.js')),
   output: {
     path: __dirname,
     filename: '[name].bundle.js',

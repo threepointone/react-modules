@@ -1,4 +1,5 @@
 import React from 'react'
+let isBrowser = typeof document !== 'undefined'
 
 export class Modules extends React.Component {
   // static defaultProps = {
@@ -84,3 +85,6 @@ export function preserve(id, element) {
 export function preserved(id, Tag = 'div', props = {}) {
   return cache[id] ? <Tag {...props} dangerouslySetInnerHTML={{ __html: cache[id] }} /> : undefined
 }
+
+
+// isBrowser && hydrate() // whate harm could this do 
