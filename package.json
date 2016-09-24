@@ -1,6 +1,6 @@
 {
   "name": "react-modules",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "code splitting as a component",
   "main": "lib/index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"
   },
-  "peerDependencies": {    
+  "peerDependencies": {
     "react": "*"
   },
   "eslintConfig": {
