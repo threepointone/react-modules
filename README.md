@@ -40,7 +40,7 @@ api
   - `include={bool}` - bypasses the code split
   - `defer={bool}` - loads the scripts only in the trasnpiled version
   - `chunkName={str}` - optional, acts as third argument to the backing `require.ensure()` call for named chunks 
-  - `entry={name}` - (experimental) include chunk into `name` entry. works in tandem with `extractEntries()`
+  - `entry={name}` - (experimental) include chunk into `name` entry. works in tandem with `extractEntries()` (TODO - accept multiple entries)
 
 
 ## html persistence helpers
@@ -60,6 +60,8 @@ example -
 }</Module>
 ```
 
+Use sparingly! This will probably break react's checksum algo, but that's the tradeoff you'll need for this behavior.  
+
 ## plugin 
 
 - `react-modules/babel` - wraps `Modules` components' `load` props with `require.ensure` boilerplate, generating code splits
@@ -68,12 +70,16 @@ example -
 
 - `extractEntries(filepath)` (experimental) - statically analyze module and generate webpack entries 
 
+## extractResourceMap
+- `extractResourceMap(filepath)` (experimental) - statically analyze an app and generate urlpattern -> entries map. works in tandem with react-router@4.
+
 todo
 ---
 
 - docs
 - tests
-- detect entry points
+- custom `<Match/>` component that accepts entry/load
+- `express` helper/middleware to serve bundles
 - hmr compat
 - arbit file types / webpack loader compat
 - browserify compat

@@ -17,7 +17,8 @@ export default function extract(file) {
       let src = fs.readFileSync(path.join(dir, f), 'utf8')
       let ast = babylon.parse(src, {
         sourceType: 'module',
-        plugins: [ 'jsx' ]
+        plugins: [  'jsx', 'flow', 'doExpressions', 'objectRestSpread', 'decorators', 'classProperties',
+                    'exportExtensions', 'asyncGenerators', 'functionBind', 'functionSent' ]
       })
       traverse(ast, {
         enter(x) {
