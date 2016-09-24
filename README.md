@@ -60,7 +60,9 @@ example -
 }</Module>
 ```
 
-Use sparingly! This will probably break react's checksum algo, but that's the tradeoff you'll need for this behavior.  
+Use sparingly! This will probably break react's checksum algo, but that's the tradeoff you'll need for this behavior. 
+
+NB: to prime the cache, import and call `hydrate()` right before you call `ReactDOM.render()`. 
 
 ## plugin 
 
